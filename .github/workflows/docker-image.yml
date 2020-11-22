@@ -9,7 +9,6 @@ on:
 jobs:
 
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -22,16 +21,13 @@ jobs:
     - name: Install Dependencies
       run: npm install
 
-    - name: Build Project
-      run: npm run build
-
     - name: Deploy to Server
       uses: easingthemes/ssh-deploy@v2.1.1
       env:
         REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
         REMOTE_USER: ${{ secrets.REMOTE_USER }}
         SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
-        TARGET: './<application_dir>'
+        TARGET: './recipes'
         ARGS: '-rltgoDzvO --delete'
         SOURCE: '.'
 
@@ -43,4 +39,4 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
           cd ~
-          docker-compose up --build -d <application_name>
+          docker-compose up --build -d recipes-api
