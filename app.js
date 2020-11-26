@@ -1,5 +1,4 @@
 const fetch = require('node-fetch')
-const fs = require('fs')
 const proxy = require('express-http-proxy')
 const app = require('express')()
 const bodyParser = require('body-parser')
