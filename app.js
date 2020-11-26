@@ -56,7 +56,7 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
     next()
 })
-
+ 
 const fetchPost = async (database, cookie, document) => {
     const rawResponse = await fetch(urljoin(couchdbUrl, database), {
         method: 'POST',
